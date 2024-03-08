@@ -4,13 +4,13 @@ left to right direction
 actor User as u
 
 package "PerformanceEvaluation" {
-  usecase "Automatic Evaluation" as UC1 <<System automatically evaluates user's performance>>
+  usecase "Avaliação Automática" as UC1 <<Sistema avalia automaticamente o desempenho do utilizador>>
 
-  usecase "Suggest Improvements" as UC2 <<System suggests improvements based on performance evaluation>>
+  usecase "Sugerir Melhorias" as UC2 <<Sistema sugere melhorias com base na avaliação de desempenho>>
 
-  usecase "View Performance History" as UC3 <<User views historical performance evaluations>>
+  usecase "Visualizar Histórico de Desempenho" as UC3 <<O User visualiza avaliações de desempenho históricas>>
 
-  usecase "Request Reevaluation" as UC4 <<User requests a reevaluation of their performance>>
+  usecase "Solicitar Reavaliação" as UC4 <<O User solicita uma reavaliação do seu desempenho>>
 
 }
 

@@ -13,7 +13,7 @@ class User {
   + newPasswordCodes: NewPasswordCode[]
   + workoutHistory: WorkoutHistory[]
   + goals: Goals[]
-  + weightAndMeasurements: WeightAndMeasurements[]
+  + bodyData: BodyData[]
   + performanceEvaluations: PerformanceEvaluation[]
 }
 

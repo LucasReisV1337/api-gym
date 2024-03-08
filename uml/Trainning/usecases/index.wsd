@@ -3,24 +3,24 @@ left to right direction
 
 actor User as u
 
-package "Training" {
-  usecase "Create Training Program" as UC1 <<User creates a new training program>>
+package "Trainning" {
+  usecase "Criar Programa de Treinamento" as UC1 <<User cria um novo programa de treinamento>>
 
-  usecase "Update Training Program" as UC2 <<User updates information of an existing training program>>
+  usecase "Atualizar Programa de Treinamento" as UC2 <<User atualiza informações de um programa de treinamento existente>>
 
-  usecase "Delete Training Program" as UC3 <<User deletes an existing training program>>
+  usecase "Excluir Programa de Treinamento" as UC3 <<User exclui um programa de treinamento existente>>
 
-  usecase "View Available Exercises" as UC4 <<User views the list of available exercises for a training program>>
+  usecase "Visualizar Exercícios Disponíveis" as UC4 <<User visualiza a lista de exercícios disponíveis para um programa de treinamento>>
 
-  usecase "Add Exercise to Training Program" as UC5 <<User adds an exercise to a specific training program>>
+  usecase "Adicionar Exercício ao Programa de Treinamento" as UC5 <<User adiciona um exercício a um programa de treinamento específico>>
 
-  usecase "Remove Exercise from Training Program" as UC6 <<User removes an exercise from a training program>>
+  usecase "Remover Exercício do Programa de Treinamento" as UC6 <<User remove um exercício de um programa de treinamento>>
 
-  usecase "Start Training Session" as UC7 <<User starts a training session for a specific program>>
+  usecase "Iniciar Sessão de Treinamento" as UC7 <<User inicia uma sessão de treinamento para um programa específico>>
 
-  usecase "Pause Training Session" as UC8 <<User pauses an ongoing training session>>
+  usecase "Pausar Sessão de Treinamento" as UC8 <<User pausa uma sessão de treinamento em andamento>>
 
-  usecase "Complete Training Session" as UC9 <<User completes a training session>>
+  usecase "Concluir Sessão de Treinamento" as UC9 <<User conclui uma sessão de treinamento>>
 
 }
 

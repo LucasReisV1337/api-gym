@@ -4,21 +4,21 @@ left to right direction
 actor User as u
 
 package "Exercise" {
-  usecase "Create Exercise" as UC1 <<User creates a new exercise>>
+  usecase "Criar Exercício" as UC1 <<User cria um novo exercício>>
 
-  usecase "Update Exercise" as UC2 <<User updates information of an existing exercise>>
+  usecase "Atualizar Exercício" as UC2 <<User atualiza informações de um exercício existente>>
 
-  usecase "Delete Exercise" as UC3 <<User deletes an existing exercise>>
+  usecase "Excluir Exercício" as UC3 <<User exclui um exercício existente>>
 
-  usecase "Get Exercise" as UC4 <<User retrieves detailed information about an exercise>>
+  usecase "Obter Informações do Exercício" as UC4 <<User obtém informações detalhadas sobre um exercício>>
 
-  usecase "List Exercises" as UC5 <<User lists all available exercises>>
+  usecase "Listar Exercícios" as UC5 <<User lista todos os exercícios disponíveis>>
 
-  usecase "Search Exercises" as UC6 <<User searches for exercises by keywords>>
+  usecase "Pesquisar Exercícios" as UC6 <<User busca exercícios por palavras-chave>>
 
-  usecase "Add Exercise to Training" as UC7 <<User includes an exercise in a specific training program>>
+  usecase "Adicionar Exercício ao Treinamento" as UC7 <<User inclui um exercício em um programa de treinamento específico>>
 
-  usecase "View Exercise Statistics" as UC8 <<User checks statistics related to an exercise>>
+  usecase "Visualizar Estatísticas do Exercício" as UC8 <<User verifica estatísticas relacionadas a um exercício>>
 
 }
 

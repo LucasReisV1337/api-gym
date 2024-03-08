@@ -1,6 +1,6 @@
 @startuml
 
-class WeightAndMeasurements {
+class BodyData {
     + id: uuid
     + user: User
     + date: Date

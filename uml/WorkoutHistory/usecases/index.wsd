@@ -4,15 +4,15 @@ left to right direction
 actor User as u
 
 package "WorkoutHistory" {
-  usecase "View Workout History" as UC1 <<User reviews and examines their historical workout data>>
+  usecase "Visualizar Histórico de Treino" as UC1 <<O User revisa e examina seus dados históricos de treino>>
 
-  usecase "Filter Workout History" as UC2 <<User filters workout history based on specific criteria>>
+  usecase "Filtrar Histórico de Treino" as UC2 <<O User filtra o histórico de treino com base em critérios específicos>>
 
-  usecase "Export Workout History" as UC3 <<User exports workout history for analysis or record-keeping>>
+  usecase "Exportar Histórico de Treino" as UC3 <<O User exporta o histórico de treino para análise ou registro>>
 
-  usecase "Share Workout History" as UC4 <<User shares workout history with others>>
+  usecase "Compartilhar Histórico de Treino" as UC4 <<O User compartilha o histórico de treino com outras pessoas>>
 
-  usecase "Delete Workout Entry" as UC5 <<User deletes a specific entry from workout history>>
+  usecase "Excluir Entrada de Treino" as UC5 <<O User exclui uma entrada específica do histórico de treino>>
 
 }
 

@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "BodyData" {
+  usecase "Registrar Peso e Medidas" as UC1 <<User registra seu peso atual e medidas corporais>>
+
+  usecase "Visualizar Progresso" as UC2 <<User visualiza o progresso com base no peso e medidas registrados>>
+
+  usecase "Definir Metas" as UC3 <<User estabelece metas específicas para peso e medidas>>
+
+  usecase "Acompanhar Progresso das Metas" as UC4 <<User acompanha o progresso em direção às metas estabelecidas>>
+
+  usecase "Excluir Registro" as UC5 <<User exclui uma entrada registrada de peso e medidas>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+
+@enduml

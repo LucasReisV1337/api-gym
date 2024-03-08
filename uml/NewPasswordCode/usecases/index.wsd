@@ -4,15 +4,15 @@ left to right direction
 actor User as u
 
 package "NewPasswordCode" {
-  usecase "Create New Password Code" as UC1 <<User creates a new code to reset their password>>
+  usecase "Criar Novo Código de Senha" as UC1 <<User cria um novo código para redefinir sua senha>>
 
-  usecase "Delete New Password Code" as UC2 <<User deletes an existing password reset code>>
+  usecase "Excluir Código de Senha" as UC2 <<User exclui um código existente de redefinição de senha>>
 
-  usecase "Verify New Password Code" as UC3 <<User verifies the validity of a password reset code>>
+  usecase "Verificar Código de Senha" as UC3 <<User verifica a validade de um código de redefinição de senha>>
 
-  usecase "Resend New Password Code" as UC4 <<User requests to resend the password reset code>>
+  usecase "Reenviar Código de Senha" as UC4 <<User solicita o reenvio do código de redefinição de senha>>
 
-  usecase "Extend Code Expiration" as UC5 <<User extends the expiration time of a password reset code>>
+  usecase "Estender Expiração do Código" as UC5 <<User estende o tempo de expiração de um código de redefinição de senha>>
 
 }
 

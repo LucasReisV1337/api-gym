@@ -15,11 +15,10 @@ class User {
   + deleteAccount(): void
   + updateAccount(): void
   + changePassword(): void
-  + Trainings: Training[]
+  + trainings: Training[]
   + newPasswordCodes: NewPasswordCode[]
   + workoutHistory: WorkoutHistory[] 
-  + goals: Goals[]
-  + weightAndMeasurements: WeightAndMeasurements[] 
+  + bodyData: BodyData[] 
   + performanceEvaluations: PerformanceEvaluation[]
 }
 
@@ -65,14 +64,14 @@ class WorkoutHistory {
     + trainings: Training[]
 }
 
-class WeightAndMeasurements {
+class BodyData {
     + id: uuid
     + user: User
     + date: Date
     + weight: number
     + measurements: String
     + bodyFatPercentage: number
-    + recordWeightAndMeasurements(): void
+    + recordBodyData(): void
     + viewProgress(): void
 }
 
@@ -89,7 +88,7 @@ class PerformanceEvaluation {
 User --> Exercise : cria
 User --> NewPasswordCode : cria ao solicitar troca de senha 
 User --> WorkoutHistory : visualiza histórico
-User --> WeightAndMeasurements : registra, visualiza progresso
+User --> BodyData : registra, visualiza progresso
 User --> PerformanceEvaluation : avalia, sugere melhorias
 Exercise --|> Training : inclui
 
