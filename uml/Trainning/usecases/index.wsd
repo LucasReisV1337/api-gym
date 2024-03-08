@@ -1,8 +1,0 @@
-@startuml
-
-:Customer: -> (Criar customer)
-:Customer: -> (Atualizar customer)
-:Customer: -> (Consultar um customer)
-:Customer: -> (Consultar customers)
-
-@enduml
