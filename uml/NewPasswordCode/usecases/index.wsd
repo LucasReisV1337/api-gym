@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "NewPasswordCode" {
+  usecase "Create New Password Code" as UC1 <<User creates a new code to reset their password>>
+
+  usecase "Delete New Password Code" as UC2 <<User deletes an existing password reset code>>
+
+  usecase "Verify New Password Code" as UC3 <<User verifies the validity of a password reset code>>
+
+  usecase "Resend New Password Code" as UC4 <<User requests to resend the password reset code>>
+
+  usecase "Extend Code Expiration" as UC5 <<User extends the expiration time of a password reset code>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+
+@enduml

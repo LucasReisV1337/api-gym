@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "WorkoutHistory" {
+  usecase "View Workout History" as UC1 <<User reviews and examines their historical workout data>>
+
+  usecase "Filter Workout History" as UC2 <<User filters workout history based on specific criteria>>
+
+  usecase "Export Workout History" as UC3 <<User exports workout history for analysis or record-keeping>>
+
+  usecase "Share Workout History" as UC4 <<User shares workout history with others>>
+
+  usecase "Delete Workout Entry" as UC5 <<User deletes a specific entry from workout history>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "Training" {
+  usecase "Create Training Program" as UC1 <<User creates a new training program>>
+
+  usecase "Update Training Program" as UC2 <<User updates information of an existing training program>>
+
+  usecase "Delete Training Program" as UC3 <<User deletes an existing training program>>
+
+  usecase "View Available Exercises" as UC4 <<User views the list of available exercises for a training program>>
+
+  usecase "Add Exercise to Training Program" as UC5 <<User adds an exercise to a specific training program>>
+
+  usecase "Remove Exercise from Training Program" as UC6 <<User removes an exercise from a training program>>
+
+  usecase "Start Training Session" as UC7 <<User starts a training session for a specific program>>
+
+  usecase "Pause Training Session" as UC8 <<User pauses an ongoing training session>>
+
+  usecase "Complete Training Session" as UC9 <<User completes a training session>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+u --> UC6
+u --> UC7
+u --> UC8
+u --> UC9
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "Exercise" {
+  usecase "Create Exercise" as UC1 <<User creates a new exercise>>
+
+  usecase "Update Exercise" as UC2 <<User updates information of an existing exercise>>
+
+  usecase "Delete Exercise" as UC3 <<User deletes an existing exercise>>
+
+  usecase "Get Exercise" as UC4 <<User retrieves detailed information about an exercise>>
+
+  usecase "List Exercises" as UC5 <<User lists all available exercises>>
+
+  usecase "Search Exercises" as UC6 <<User searches for exercises by keywords>>
+
+  usecase "Add Exercise to Training" as UC7 <<User includes an exercise in a specific training program>>
+
+  usecase "View Exercise Statistics" as UC8 <<User checks statistics related to an exercise>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+u --> UC6
+u --> UC7
+u --> UC8
+
+@enduml
