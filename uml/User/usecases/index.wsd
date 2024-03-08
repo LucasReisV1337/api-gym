@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "User" {
+  usecase "Login" as UC1 <<User initiates the login process to access the system>>
+
+  usecase "Verify Email" as UC2 <<User confirms and validates their email address>>
+
+  usecase "Create Account" as UC3 <<User establishes a new account in the system>>
+
+  usecase "Delete Account" as UC4 <<User permanently removes their account from the system>>
+
+  usecase "Update Account" as UC5 <<User modifies and updates their account information>>
+
+  usecase "Change Password" as UC6 <<User alters their account password for security reasons>>
+
+  usecase "View Trainings" as UC7 <<User explores and observes available training programs>>
+
+  usecase "Request New Password" as UC8 <<User initiates a process to reset or retrieve their password>>
+
+  usecase "View Workout History" as UC9 <<User reviews and examines their historical workout data>>
+
+  usecase "Record Weight and Measurements" as UC10 <<User logs their current weight and body measurements>>
+
+  usecase "Evaluate Performance" as UC11 <<User assesses and analyzes their performance metrics>>
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+u --> UC6
+u --> UC7
+u --> UC8
+u --> UC9
+u --> UC10
+u --> UC11
+@enduml

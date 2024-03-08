@@ -1,0 +1,16 @@
+@startuml
+
+class Exercise {
+  + id: uuid
+  + createdAt: Date
+  + updatedAt: Date
+  + name: String
+  + description: String
+  + category: String
+  + restTime: number
+  + weight: number
+  + repetitions: number
+  + series: number
+}
+
+@enduml

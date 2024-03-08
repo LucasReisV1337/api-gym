@@ -1,0 +1,12 @@
+@startuml
+
+class PerformanceEvaluation {
+    + id: uuid
+    + user: User
+    + date: Date
+    + evaluationScore: number
+    + trainings: Training[]
+}
+
+
+@enduml

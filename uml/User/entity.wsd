@@ -1,0 +1,20 @@
+@startuml
+
+class User {
+  + id: uuid
+  + nickname: String
+  + email: String
+  + cpf: number
+  + password: String
+  + emailVerified: boolean
+  + createdAt: Date
+  + updatedAt: Date
+  + Trainings: Training[]
+  + newPasswordCodes: NewPasswordCode[]
+  + workoutHistory: WorkoutHistory[]
+  + goals: Goals[]
+  + weightAndMeasurements: WeightAndMeasurements[]
+  + performanceEvaluations: PerformanceEvaluation[]
+}
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+class Training {
+  + id: uuid
+  + name: String
+  + active: boolean
+  + exercises: Exercise[]
+}
+
+@enduml
