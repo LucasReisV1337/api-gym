@@ -1,4 +1,3 @@
-import Entity from "@src/@core/@shared/entity/entity.abstract";
 
 export default class User {
   private _nickname: string;

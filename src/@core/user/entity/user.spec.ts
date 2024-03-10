@@ -1,5 +1,4 @@
 import User from "./user";
-import Entity from "@src/@core/@shared/entity/entity.abstract";
 
 describe("User", () => {
     let user: User;
