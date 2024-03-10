@@ -1,0 +1,95 @@
+@startuml
+
+class User {
+  + id: uuid
+  + nickname: String
+  + email: String
+  + cpf: number
+  + password: String
+  + emailVerified: boolean
+  + createdAt: Date
+  + updatedAt: Date
+  + login(): void
+  + verifyEmail(): void
+  + createAccount(): void
+  + deleteAccount(): void
+  + updateAccount(): void
+  + changePassword(): void
+  + trainings: Training[]
+  + newPasswordCodes: NewPasswordCode[]
+  + workoutHistory: WorkoutHistory[] 
+  + bodyData: BodyData[] 
+  + performanceEvaluations: PerformanceEvaluation[]
+}
+
+class Exercise {
+  + id: uuid
+  + createdAt: Date
+  + updatedAt: Date
+  + name: String
+  + description: String
+  + category: String
+  + restTime: number
+  + weight: number
+  + repetitions: number
+  + series: number
+  + createExercise(): void
+  + updateExercise(): void
+  + deleteExercise(): void
+  + getExercise(): void
+}
+
+class Training {
+  + id: uuid
+  + name: String
+  + active: boolean
+  + exercises: Exercise[]
+}
+
+class NewPasswordCode {
+    + id: uuid
+    + code: String
+    + user: User
+    + expirationDate: Date
+    + createCode(): void
+    + deleteCode(): void
+    + verifyCode(): void
+}
+
+class WorkoutHistory {
+    + id: uuid
+    + user: User
+    + date: Date
+    + viewHistory(): void
+    + trainings: Training[]
+}
+
+class BodyData {
+    + id: uuid
+    + user: User
+    + date: Date
+    + weight: number
+    + measurements: String
+    + bodyFatPercentage: number
+    + recordBodyData(): void
+    + viewProgress(): void
+}
+
+class PerformanceEvaluation {
+    + id: uuid
+    + user: User
+    + date: Date
+    + evaluationScore: number
+    + automaticEvaluation(): void
+    + suggestImprovements(): void
+    + trainings: Training[]
+}
+
+User --> Exercise : cria
+User --> NewPasswordCode : cria ao solicitar troca de senha 
+User --> WorkoutHistory : visualiza histórico
+User --> BodyData : registra, visualiza progresso
+User --> PerformanceEvaluation : avalia, sugere melhorias
+Exercise --|> Training : inclui
+
+@enduml

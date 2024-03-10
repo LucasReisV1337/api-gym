@@ -2,11 +2,11 @@
 
 class User {
   + id: uuid
-  + nickname: String
-  + email: String
-  + cpf: number
-  + password: String
-  + emailVerified: boolean
+  + OKnickname: String
+  + OKemail: String
+  + OKcpf: number
+  + OKpassword: String
+  + OKemailVerified: boolean
   + createdAt: Date
   + updatedAt: Date
   + Trainings: Training[]

@@ -4,27 +4,27 @@ left to right direction
 actor User as u
 
 package "User" {
-  usecase "Login" as UC1 <<O User inicia o processo de login para acessar o sistema>>
+  usecase "login()OK" as UC1 <<O User inicia o processo de login para acessar o sistema>>
 
-  usecase "Verificar Email" as UC2 <<O User confirma e valida seu endereço de e-mail>>
+  usecase "verifyEmail()OK" as UC2 <<O User confirma e valida seu endereço de e-mail>>
 
-  usecase "Criar Conta" as UC3 <<O User estabelece uma nova conta no sistema>>
+  usecase "createAccount()OK" as UC3 <<O User estabelece uma nova conta no sistema>>
 
-  usecase "Excluir Conta" as UC4 <<O User remove permanentemente sua conta do sistema>>
+  usecase "deleteAccount()OK" as UC4 <<O User remove permanentemente sua conta do sistema>>
 
-  usecase "Atualizar Conta" as UC5 <<O User modifica e atualiza as informações da sua conta>>
+  usecase "updateAccount()OK" as UC5 <<O User modifica e atualiza as informações da sua conta>>
 
-  usecase "Alterar Senha" as UC6 <<O User altera a senha da sua conta por razões de segurança>>
+  usecase "changePassword()OK" as UC6 <<O User altera a senha da sua conta por razões de segurança>>
 
-  usecase "Visualizar Treinamentos" as UC7 <<O User explora e observa os programas de treinamento disponíveis>>
+  usecase "listTraining()" as UC7 <<O User explora e observa os programas de treinamento disponíveis>>
 
-  usecase "Solicitar Nova Senha" as UC8 <<O User inicia um processo para redefinir ou recuperar sua senha>>
+  usecase "emitNewPassword()" as UC8 <<O User inicia um processo para redefinir ou recuperar sua senha>>
 
-  usecase "Visualizar Histórico de Treino" as UC9 <<O User revisa e examina seus dados históricos de treino>>
+  usecase "viewTrainingHistory()" as UC9 <<O User revisa e examina seus dados históricos de treino>>
 
-  usecase "Registrar Peso e Medidas" as UC10 <<O User registra seu peso atual e medidas corporais>>
+  usecase "recordBodyData()" as UC10 <<O User registra seu peso atual e medidas corporais>>
 
-  usecase "Avaliar Desempenho" as UC11 <<O User avalia e analisa suas métricas de desempenho>>
+  usecase "evaluatePerformance()" as UC11 <<O User avalia e analisa suas métricas de desempenho>>
 }
 
 u --> UC1
