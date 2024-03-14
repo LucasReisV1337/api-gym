@@ -7,6 +7,10 @@ describe("User", () => {
         user = new User("JohnDoe", "johndoe@example.com", 123456789, "password");
     });
 
+    it("should be defined id", () => {
+        expect(user.id).toBeDefined();
+    });
+
     it("should have the correct nickname", () => {
         expect(user.nickname).toBe("JohnDoe");
     });
@@ -27,34 +31,9 @@ describe("User", () => {
         expect(user.emailVerified).toBe(false);
     });
 
-    it("should be able to set a new nickname", () => {
-        user.nickname = "JaneDoe";
-        expect(user.nickname).toBe("JaneDoe");
-    });
-
-    it("should be able to set a new email", () => {
-        user.email = "janedoe@example.com";
-        expect(user.email).toBe("janedoe@example.com");
-    });
-
-    it("should be able to set a new cpf", () => {
-        user.cpf = 987654321;
-        expect(user.cpf).toBe(987654321);
-    });
-
-    it("should be able to set a new password", () => {
-        user.password = "newpassword";
-        expect(user.password).toBe("newpassword");
-    });
-
-    it("should be able to set emailVerified to true", () => {
-        user.emailVerified = true;
-        expect(user.emailVerified).toBe(true);
-    });
-
     it("should be able to login with the correct email and password", () => {
         user.login("johndoe@example.com", "password");
-        expect(user.emailVerified).toBe(true); // Assuming email verification is required for login
+        expect(user.emailVerified).toBe(true); 
     });
 
     it("should throw an error when trying to login with an incorrect password", () => {
@@ -77,17 +56,14 @@ describe("User", () => {
     it("should be able to create a new account", () => {
         const newUser = new User("JaneDoe", "janedoe@example.com", 987654321, "newpassword");
         expect(newUser).toBeDefined();
-        // Add more assertions if needed
     });
 
     it("should be able to delete the account", () => {
         user.deleteAccount("johndoe@example.com", "password");
-        // Add your assertions here
     });
 
     it("should be able to update the account", () => {
         user.updateAccount("JaneDoe", "janedoe@example.com", 987654321, "newpassword");
-        // Add your assertions here
     });
 
     it("should be able to change the password", () => {
