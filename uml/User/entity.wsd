@@ -2,19 +2,14 @@
 
 class User {
   + id: uuid
-  + OKnickname: String
-  + OKemail: String
-  + OKcpf: number
-  + OKpassword: String
-  + OKemailVerified: boolean
+  + nickname: String
+  + email: String
+  + cpf: number
+  + password: String
+  + emailVerified: boolean
   + createdAt: Date
   + updatedAt: Date
   + Trainings: Training[]
-  + newPasswordCodes: NewPasswordCode[]
-  + workoutHistory: WorkoutHistory[]
-  + goals: Goals[]
-  + bodyData: BodyData[]
-  + performanceEvaluations: PerformanceEvaluation[]
 }
 
 @enduml

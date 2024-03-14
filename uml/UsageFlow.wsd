@@ -3,14 +3,6 @@
 actor User as u
 
 u -> Exercise : Cria um novo exercício
-u -> NewPasswordCode : Solicita troca de senha
-NewPasswordCode --> u : Cria um código de troca de senha
-u -> WorkoutHistory : Visualiza histórico de treino
-u -> BodyData : Registra peso e medidas
-BodyData --> u : Visualiza progresso pessoal
-PerformanceEvaluation --> u : Avalia desempenho individual
-PerformanceEvaluation --> u : Sugere melhorias para o treino
-WorkoutHistory --> PerformanceEvaluation : Fornece histórico de treino
-Exercise --> Training : Inclui exercício no programa de treinamento
+
 
 @enduml

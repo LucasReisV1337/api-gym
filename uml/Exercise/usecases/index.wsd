@@ -16,9 +16,6 @@ package "Exercise" {
 
   usecase "Pesquisar Exercícios" as UC6 <<User busca exercícios por palavras-chave>>
 
-  usecase "Adicionar Exercício ao Treinamento" as UC7 <<User inclui um exercício em um programa de treinamento específico>>
-
-  usecase "Visualizar Estatísticas do Exercício" as UC8 <<User verifica estatísticas relacionadas a um exercício>>
 
 }
 
@@ -28,7 +25,6 @@ u --> UC3
 u --> UC4
 u --> UC5
 u --> UC6
-u --> UC7
-u --> UC8
+
 
 @enduml
