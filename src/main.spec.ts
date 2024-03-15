@@ -2,24 +2,17 @@ import Exercise from "./@core/exercise/entity/exercise";
 import Trainning from "./@core/trainning/entity/trainning";
 import User from "./@core/user/entity/user";
 
-describe("User", () => {
-    let user: User;
-    let training: Trainning;
-    let exercise: Exercise;
+describe('User', () => {
+    it('should be able to add a training', () => {
+        const user = new User("nickname", "email", 123456789, "password");
 
-    beforeEach(() => {
-        user = new User("nickname", "email", 123456789, "password");
-        training = new Trainning("name", true);
-        exercise = new Exercise("peitao", "description", "category", 60, 10, 10, 10);
-    });
+        const exercise = new Exercise("Supino Reto", "description", "category", 60, 10, 10, 10);
+        const exercise2 = new Exercise("Crucifixo na Máquina", "description", "category", 120, 20, 20, 20);
 
-    it("should add training to user", () => {
+        const training = new Trainning("Treino A", true, [exercise, exercise2]);
+
         user.addTraining(training);
-        expect(user.getTrainings()).toContain(training);
-    });
 
-    it("should create training with exercises", () => {
-        training.createTraining("name", true, [exercise]);
-        expect(training.getExercises()).toContain(exercise);
+        expect(user.getTrainings()).toEqual([training]);
     });
 });
