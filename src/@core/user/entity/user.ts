@@ -1,3 +1,4 @@
+import Trainning from "@src/@core/trainning/entity/trainning";
 import { randomUUID as uuid } from "crypto";
 export default class User {
   private _id: string;
@@ -6,14 +7,22 @@ export default class User {
   private _cpf: number;
   private _password: string;
   private _emailVerified: boolean;
+  private _trainings: Trainning[];
 
-  constructor(nickname: string, email: string, cpf: number, password: string) {
+  constructor(
+    nickname: string,
+    email: string,
+    cpf: number,
+    password: string,
+    trainings: Trainning[] = []
+  ) {
     this._id = uuid();
     this._nickname = nickname;
     this._email = email;
     this._cpf = cpf;
     this._password = password;
     this._emailVerified = false;
+    this._trainings = trainings;
   }
 
   get id(): string {
@@ -103,5 +112,17 @@ export default class User {
       this._password = newPassword;
       console.log("Senha alterada com sucesso");
     }
+  }
+
+  addTraining(training: Trainning): void {
+    this._trainings.push(training);
+    console.log(
+      `Treino ${training.name} adicionado com sucesso para o usuário ${this.nickname}`
+    );
+  }
+
+  getTrainings(): Trainning[] {
+    console.log(this._trainings);
+    return this._trainings;
   }
 }

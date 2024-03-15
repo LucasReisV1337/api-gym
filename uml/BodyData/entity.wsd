@@ -1,0 +1,14 @@
+@startuml
+
+class BodyData {
+    + id: uuid
+    + user: User
+    + date: Date
+    + weight: number
+    + measurements: String
+    + bodyFatPercentage: number
+
+}
+
+
+@enduml

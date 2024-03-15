@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "Trainning" {
+  usecase "Criar Programa de Treinamento" as UC1 <<User cria um novo programa de treinamento>>
+
+  usecase "Atualizar Programa de Treinamento" as UC2 <<User atualiza informações de um programa de treinamento existente>>
+
+  usecase "Excluir Programa de Treinamento" as UC3 <<User exclui um programa de treinamento existente>>
+
+
+  usecase "Iniciar Sessão de Treinamento" as UC4 <<User inicia uma sessão de treinamento para um programa específico>>
+
+  usecase "Pausar Sessão de Treinamento" as UC5 <<User pausa uma sessão de treinamento em andamento>>
+
+  usecase "Concluir Sessão de Treinamento" as UC6 <<User conclui uma sessão de treinamento>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+u --> UC6
+
+
+@enduml

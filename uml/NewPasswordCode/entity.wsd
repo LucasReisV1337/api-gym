@@ -1,0 +1,12 @@
+@startuml
+
+class NewPasswordCode {
+    + id: uuid
+    + code: String
+    + user: User
+    + expirationDate: Date
+}
+
+
+
+@enduml

@@ -9,7 +9,12 @@ class User {
   + emailVerified: boolean
   + createdAt: Date
   + updatedAt: Date
-  + Trainings: Training[]
+  + trainings: Training[]
+  + newPasswordCodes: NewPasswordCode[]
+  + workoutHistory: WorkoutHistory[]
+  + goals: Goals[]
+  + bodyData: BodyData[]
+  + performanceEvaluations: PerformanceEvaluation[]
 }
 
 @enduml

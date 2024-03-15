@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+actor User as u
+
+package "PerformanceEvaluation" {
+  usecase "Avaliação Automática" as UC1 <<Sistema avalia automaticamente o desempenho do utilizador>>
+
+  usecase "Sugerir Melhorias" as UC2 <<Sistema sugere melhorias com base na avaliação de desempenho>>
+
+  usecase "Visualizar Histórico de Desempenho" as UC3 <<O User visualiza avaliações de desempenho históricas>>
+
+  usecase "Solicitar Reavaliação" as UC4 <<O User solicita uma reavaliação do seu desempenho>>
+
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+
+@enduml
