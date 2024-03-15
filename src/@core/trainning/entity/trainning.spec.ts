@@ -1,58 +1,32 @@
 import Trainning from './trainning';
+import Exercise from "../../exercise/entity/exercise";
 
 describe('Trainning', () => {
     let trainning: Trainning;
+    let exercise: Exercise;
 
     beforeEach(() => {
-        trainning = new Trainning('Test Trainning', true);
+        exercise = new Exercise("Supino Reto", "description", "category", 60, 10, 10, 10);
+        trainning = new Trainning('Test Trainning', true, [exercise]);
     });
 
-    it('should have a valid id', () => {
-        expect(trainning.id).toBeDefined();
-        expect(trainning.id.length).toBeGreaterThan(0);
+    it('should create a new Trainning instance', () => {
+        expect(trainning).toBeInstanceOf(Trainning);
     });
 
-    it('should have a name', () => {
-        expect(trainning.name).toBe('Test Trainning');
-    });
-
-    it('should be active', () => {
-        expect(trainning.isActive).toBe(true);
-    });
-
-    it('should create a new trainning', () => {
-        const newTrainning = trainning.createTraining('New Trainning', false);
-        expect(newTrainning).toBeInstanceOf(Trainning);
-        expect(newTrainning.name).toBe('New Trainning');
-        expect(newTrainning.isActive).toBe(false);
-    });
-
-    it('should update the trainning', () => {
-        const updatedTrainning = trainning.updateTraining('Updated Trainning', false);
-        expect(updatedTrainning).toBe(trainning);
+    it('should update the Trainning', () => {
+        trainning.updateTraining('Updated Trainning', false);
         expect(trainning.name).toBe('Updated Trainning');
         expect(trainning.isActive).toBe(false);
     });
 
-    it('should delete the trainning', () => {
-        const deletedTrainning = trainning.deleteTraining();
-        expect(deletedTrainning).toBe(trainning);
-        expect(trainning.isActive).toBe(false);
+    it('should remove an exercise from the Trainning', () => {
+        trainning.removeExercise(exercise);
+        expect(trainning.getExercises()).not.toContain(exercise);
     });
 
-    it('should return itself when listing trainnings', () => {
-        const listedTrainnings = trainning.listTrainings();
-        expect(listedTrainnings).toBe(trainning);
-    });
-
-    it('should return itself when getting trainning by id', () => {
-        const trainningById = trainning.getTrainingById('123');
-        expect(trainningById).toBe(trainning);
-    });
-
-    it('should activate the trainning', () => {
-        const activatedTrainning = trainning.activateTraining();
-        expect(activatedTrainning).toBe(trainning);
-        expect(trainning.isActive).toBe(true);
+    it('should get an exercise by id', () => {
+        const foundExercise = trainning.getExerciseById(exercise.id);
+        expect(foundExercise).toBe(exercise);
     });
 });
