@@ -110,4 +110,28 @@ describe("UserRepository", () => {
       expect(foundUser).toBeUndefined();
     });
   });
+
+  describe("findAll", () => {
+    it("should return all users", async () => {
+      const user1 = new User("John Doe", "johndoe@email.com", "password");
+      const user2 = new User("Jane Doe2", "johndoe2@email.com", "password");
+      await prisma.user.create({
+        data: {
+          nickname: user1.nickname,
+          email: user1.email,
+          password: user1.password,
+        },
+      });
+      await prisma.user.create({
+        data: {
+          nickname: user2.nickname,
+          email: user2.email,
+          password: user2.password,
+        },
+      });
+
+      const users = await userRepository.findAll();
+      expect(users).toHaveLength(2);
+    });
+  });
 });

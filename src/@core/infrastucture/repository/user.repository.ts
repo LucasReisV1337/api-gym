@@ -13,7 +13,6 @@ export default class UserRepository implements UserRepositoryInterface {
           password: user.password
         },
       });
-      console.log(newUser);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +30,6 @@ export default class UserRepository implements UserRepositoryInterface {
           password: user.password,
         },
       });
-      console.log(updatedUser);
     } catch (error) {
       console.log(error);
     }
@@ -67,12 +65,11 @@ export default class UserRepository implements UserRepositoryInterface {
 
   async delete(id: string): Promise<void> {
     try {
-      const deletedUser = await prisma.user.delete({
+      await prisma.user.delete({
         where: {
           id: id,
         },
       });
-      console.log(deletedUser);
     } catch (error) {
       console.log(error);
     }

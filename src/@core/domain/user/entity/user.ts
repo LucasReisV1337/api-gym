@@ -49,7 +49,6 @@ export default class User {
   login(email: string, password: string): void {
     if (this._email === email && this._password === password) {
       this._emailVerified = true;
-      console.log("Login efetuado com sucesso");
     } else {
       throw new Error("Email ou senha incorretos");
     }
@@ -58,7 +57,6 @@ export default class User {
   verifyEmail(email: string): void {
     if (this._email === email) {
       this._emailVerified = true;
-      console.log("Email verificado com sucesso");
     } else {
       console.log("Email inválido");
     }
@@ -77,12 +75,10 @@ export default class User {
     this._email = email;
     
     this._password = password;
-    console.log("Usuário cadastrado com sucesso");
   }
 
   deleteAccount(email: string, password: string): void {
     if (this._email === email && this._password === password) {
-      console.log("Conta deletada com sucesso");
     } else {
       console.log("Email ou senha inválidos");
     }
@@ -101,41 +97,29 @@ export default class User {
     this._email = email;
     
     this._password = password;
-    console.log("Usuário atualizado com sucesso");
   }
 
   changePassword(email: string, password: string, newPassword: string): void {
     if (this._email === email && this._password === password) {
       this._password = newPassword;
-      console.log("Senha alterada com sucesso");
     }
   }
 
   addTraining(training: Trainning): void {
     this._trainings.push(training);
-    console.log(
-      `Treino ${training.name} adicionado com sucesso para o usuário ${this.nickname}`
-    );
   }
 
   getTrainings(): Trainning[] {
-    console.log(this._trainings);
     return this._trainings;
   }
 
   editTraining(training: Trainning, updatedTraining: Trainning): void {
     const index = this._trainings.indexOf(training);
     this._trainings[index] = updatedTraining;
-    console.log(
-      `Treino ${training.name} atualizado com sucesso para o usuário ${this.nickname}`
-    );
   }
 
   deleteTraining(training: Trainning): void {
     const index = this._trainings.indexOf(training);
     this._trainings.splice(index, 1);
-    console.log(
-      `Treino ${training.name} deletado com sucesso para o usuário ${this.nickname}`
-    );
   }
 }

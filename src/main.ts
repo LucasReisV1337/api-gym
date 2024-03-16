@@ -2,6 +2,7 @@ import Exercise from "./@core/domain/exercise/entity/exercise";
 import Trainning from "./@core/domain/trainning/entity/trainning";
 
 import User from "./@core/domain/user/entity/user";
+import UserRepository from "./@core/infrastucture/repository/user.repository";
 
 const user = new User("nickname", "email", "password");
 
@@ -27,6 +28,7 @@ const exercise2 = new Exercise(
 
 const training = new Trainning("Treino A", true, [exercise, exercise2]);
 
-user.addTraining(training);
+const userRepo = new UserRepository();
 
-user.getTrainings();
+
+console.log(userRepo.findAll())
