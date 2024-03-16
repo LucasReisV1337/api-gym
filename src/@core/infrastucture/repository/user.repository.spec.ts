@@ -1,0 +1,113 @@
+import { PrismaClient } from "@prisma/client";
+import User from "../../domain/user/entity/user";
+import UserRepository from "./user.repository";
+
+const prisma = new PrismaClient();
+
+describe("UserRepository", () => {
+  let userRepository: UserRepository;
+
+  beforeAll(() => {
+    userRepository = new UserRepository();
+  });
+
+  afterEach(async () => {
+    await prisma.user.deleteMany();
+  });
+
+  afterAll(async () => {
+    await prisma.$disconnect();
+  });
+
+  describe("create", () => {
+    it("should create a new user", async () => {
+      const user = new User("John Doe", "john@example.com", "password");
+
+      await userRepository.create(user);
+
+      const createdUser = await prisma.user.findUnique({
+        where: {
+          email: user.email,
+        },
+      });
+
+      expect(createdUser).toBeDefined();
+      expect(createdUser?.nickname).toBe(user.nickname);
+    });
+  });
+
+  describe("findById", () => {
+    it("should return the user with the specified id", async () => {
+      const user = new User("John Doe", "john@example.com", "password");
+      const createdUser = await prisma.user.create({
+        data: {
+          nickname: user.nickname,
+          email: user.email,
+          password: user.password
+        },
+      });
+
+      const foundUser = await userRepository.findById(createdUser.id);
+
+      expect(foundUser).toBeDefined();
+      expect(foundUser?.nickname).toBe(user.nickname);
+      expect(foundUser?.email).toBe(user.email);
+    });
+
+    it("should return undefined if the user is not found", async () => {
+      const foundUser = await userRepository.findById("nonexistent-id");
+
+      expect(foundUser).toBeUndefined();
+    });
+  });
+
+  describe("delete", () => {
+    it("should delete the user with the specified id", async () => {
+      const user = new User("John Doe", "john@example.com", "password");
+      const createdUser = await prisma.user.create({
+        data: {
+          nickname: user.nickname,
+          email: user.email,
+          password: user.password,
+        },
+      });
+
+      await userRepository.delete(createdUser.id);
+
+      const deletedUser = await prisma.user.findUnique({
+        where: {
+          id: createdUser.id,
+        },
+      });
+
+      expect(deletedUser).toBeNull();
+    });
+  });
+
+  describe("findByEmail", () => {
+    it("should return the user with the specified email", async () => {
+      const user = new User("John Doe", "john@example.com", "password");
+      await prisma.user.create({
+        data: {
+          nickname: user.nickname,
+          email: user.email,
+          password: user.password,
+        },
+      });
+
+      const foundUser = await userRepository.findByEmail(user.email);
+
+      expect(foundUser).toBeDefined();
+      expect(foundUser?.nickname).toBe(user.nickname);
+      expect(foundUser?.email).toBe(user.email);
+    });
+
+    it("should return undefined if the user is not found", async () => {
+      const foundUser = await userRepository.findByEmail(
+        "nonexistent@example.com"
+      );
+
+      expect(foundUser).toBeUndefined();
+    });
+  });
+});

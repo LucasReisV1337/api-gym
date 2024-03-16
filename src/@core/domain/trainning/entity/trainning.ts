@@ -1,4 +1,4 @@
-import Exercise from "@src/@core/exercise/entity/exercise";
+import Exercise from "@src/@core/domain/exercise/entity/exercise";
 import { randomUUID as uuid } from "crypto";
 
 export default class Trainning {
@@ -26,15 +26,15 @@ export default class Trainning {
     return this._isActive;
   }
 
-  updateTraining(name: string, isActive: boolean): void {
-    this._name = name;
-    this._isActive = isActive;
-  }
-
 
   removeExercise(exercise: Exercise): void {
     const index = this._exercises.indexOf(exercise);
     this._exercises.splice(index, 1);
+  }
+
+  editExercise(exercise: Exercise, newExercise: Exercise): void {
+    const index = this._exercises.indexOf(exercise);
+    this._exercises[index] = newExercise;
   }
 
   getExerciseById(id: string): Exercise | undefined {

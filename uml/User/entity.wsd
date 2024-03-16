@@ -4,7 +4,6 @@ class User {
   + id: uuid
   + nickname: String
   + email: String
-  + cpf: number
   + password: String
   + emailVerified: boolean
   + createdAt: Date

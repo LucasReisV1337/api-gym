@@ -1,10 +1,10 @@
-import Trainning from "@src/@core/trainning/entity/trainning";
+import Trainning from "../../trainning/entity/trainning";
 import { randomUUID as uuid } from "crypto";
 export default class User {
   private _id: string;
   private _nickname: string;
   private _email: string;
-  private _cpf: number;
+
   private _password: string;
   private _emailVerified: boolean;
   private _trainings: Trainning[];
@@ -12,14 +12,14 @@ export default class User {
   constructor(
     nickname: string,
     email: string,
-    cpf: number,
+
     password: string,
     trainings: Trainning[] = []
   ) {
     this._id = uuid();
     this._nickname = nickname;
     this._email = email;
-    this._cpf = cpf;
+ 
     this._password = password;
     this._emailVerified = false;
     this._trainings = trainings;
@@ -37,10 +37,7 @@ export default class User {
     return this._email;
   }
 
-  get cpf(): number {
-    return this._cpf;
-  }
-
+ 
   get password(): string {
     return this._password;
   }
@@ -70,15 +67,15 @@ export default class User {
   createAccount(
     nickname: string,
     email: string,
-    cpf: number,
+   
     password: string
   ): void {
-    if (this._email === email || this._cpf === cpf) {
+    if (this._email === email) {
       console.log("Usuário já cadastrado");
     }
     this._nickname = nickname;
     this._email = email;
-    this._cpf = cpf;
+    
     this._password = password;
     console.log("Usuário cadastrado com sucesso");
   }
@@ -94,15 +91,15 @@ export default class User {
   updateAccount(
     nickname: string,
     email: string,
-    cpf: number,
+    
     password: string
   ): void {
-    if (this._email === email || this._cpf === cpf) {
+    if (this._email === email ) {
       console.log("Usuário já cadastrado");
     }
     this._nickname = nickname;
     this._email = email;
-    this._cpf = cpf;
+    
     this._password = password;
     console.log("Usuário atualizado com sucesso");
   }
@@ -124,5 +121,21 @@ export default class User {
   getTrainings(): Trainning[] {
     console.log(this._trainings);
     return this._trainings;
+  }
+
+  editTraining(training: Trainning, updatedTraining: Trainning): void {
+    const index = this._trainings.indexOf(training);
+    this._trainings[index] = updatedTraining;
+    console.log(
+      `Treino ${training.name} atualizado com sucesso para o usuário ${this.nickname}`
+    );
+  }
+
+  deleteTraining(training: Trainning): void {
+    const index = this._trainings.indexOf(training);
+    this._trainings.splice(index, 1);
+    console.log(
+      `Treino ${training.name} deletado com sucesso para o usuário ${this.nickname}`
+    );
   }
 }

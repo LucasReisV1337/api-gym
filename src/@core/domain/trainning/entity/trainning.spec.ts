@@ -1,5 +1,5 @@
 import Trainning from './trainning';
-import Exercise from "../../exercise/entity/exercise";
+import Exercise from '../../exercise/entity/exercise';
 
 describe('Trainning', () => {
     let trainning: Trainning;
@@ -15,9 +15,9 @@ describe('Trainning', () => {
     });
 
     it('should update the Trainning', () => {
-        trainning.updateTraining('Updated Trainning', false);
-        expect(trainning.name).toBe('Updated Trainning');
-        expect(trainning.isActive).toBe(false);
+        trainning.editExercise(exercise, new Exercise("Crucifixo na Máquina", "description", "category", 120, 20, 20, 20));
+        expect(trainning.name).toBe('Test Trainning');
+        expect(trainning.isActive).toBe(true);
     });
 
     it('should remove an exercise from the Trainning', () => {

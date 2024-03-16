@@ -4,7 +4,7 @@ describe("User", () => {
     let user: User;
 
     beforeEach(() => {
-        user = new User("JohnDoe", "johndoe@example.com", 123456789, "password");
+        user = new User("JohnDoe", "johndoe@example.com", "password");
     });
 
     it("should be defined id", () => {
@@ -19,9 +19,6 @@ describe("User", () => {
         expect(user.email).toBe("johndoe@example.com");
     });
 
-    it("should have the correct cpf", () => {
-        expect(user.cpf).toBe(123456789);
-    });
 
     it("should have the correct password", () => {
         expect(user.password).toBe("password");
@@ -54,7 +51,7 @@ describe("User", () => {
     });
 
     it("should be able to create a new account", () => {
-        const newUser = new User("JaneDoe", "janedoe@example.com", 987654321, "newpassword");
+        const newUser = new User("JaneDoe", "janedoe@example.com", "newpassword");
         expect(newUser).toBeDefined();
     });
 
@@ -63,7 +60,7 @@ describe("User", () => {
     });
 
     it("should be able to update the account", () => {
-        user.updateAccount("JaneDoe", "janedoe@example.com", 987654321, "newpassword");
+        user.updateAccount("JaneDoe", "janedoe@example.com", "newpassword");
     });
 
     it("should be able to change the password", () => {
