@@ -9,6 +9,7 @@ export default class Exercise {
   private _weight: number;
   private _repetitions: number;
   private _series: number;
+  private _trainningId: string;
 
   constructor(
     name: string,
@@ -17,7 +18,8 @@ export default class Exercise {
     restTime: number,
     weight: number,
     repetitions: number,
-    series: number
+    series: number,
+    trainningId: string
   ) {
     this._id = uuid();
     this._name = name;
@@ -27,6 +29,7 @@ export default class Exercise {
     this._weight = weight;
     this._repetitions = repetitions;
     this._series = series;
+    this._trainningId = trainningId;
   }
 
   get id(): string {
@@ -60,6 +63,10 @@ export default class Exercise {
   get series(): number {
     return this._series;
   }
+  
+  get trainningId(): string {
+    return this._trainningId;
+  }
 
   createExercise(
     name: string,
@@ -68,7 +75,8 @@ export default class Exercise {
     restTime: number,
     weight: number,
     repetitions: number,
-    series: number
+    series: number,
+    trainningId: string
   ): Exercise {
     return new Exercise(
       name,
@@ -77,7 +85,8 @@ export default class Exercise {
       restTime,
       weight,
       repetitions,
-      series
+      series,
+      trainningId
     );
   }
 

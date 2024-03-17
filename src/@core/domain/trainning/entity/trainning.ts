@@ -6,12 +6,14 @@ export default class Trainning {
   private _name: string;
   private _isActive: boolean;
   private _exercises: Exercise[];
+  private _userId: string;
 
-  constructor(name: string, isActive: boolean, exercises: Exercise[] = []) {
+  constructor(name: string, isActive: boolean, exercises: Exercise[] = [], userId: string) {
     this._id = uuid();
     this._name = name;
     this._isActive = isActive;
     this._exercises = exercises;
+    this._userId = userId;
   }
 
   get id(): string {
@@ -26,6 +28,17 @@ export default class Trainning {
     return this._isActive;
   }
 
+  get exercises(): Exercise[] {
+    return this._exercises;
+  }
+
+  get userId(): string {
+    return this._userId;
+  }
+
+  addExercise(exercise: Exercise): void {
+    this._exercises.push(exercise);
+  }
 
   removeExercise(exercise: Exercise): void {
     const index = this._exercises.indexOf(exercise);

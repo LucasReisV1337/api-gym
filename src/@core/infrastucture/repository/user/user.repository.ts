@@ -1,12 +1,12 @@
 import { PrismaClient } from "@prisma/client";
-import User from "../../domain/user/entity/user";
-import UserRepositoryInterface from "../../domain/user/repository/user-repository-interface";
+import User from "../../../domain/user/entity/user";
+import UserRepositoryInterface from "../../../domain/user/repository/user-repository-interface";
 const prisma = new PrismaClient();
 
 export default class UserRepository implements UserRepositoryInterface {
   async create(user: User): Promise<void> {
     try {
-      const newUser = await prisma.user.create({
+      await prisma.user.create({
         data: {
           nickname: user.nickname,
           email: user.email,
