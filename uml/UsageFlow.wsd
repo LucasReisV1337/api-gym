@@ -1,4 +1,4 @@
-@startuml
+@startuml DiagramName
 
 
 actor User as u
