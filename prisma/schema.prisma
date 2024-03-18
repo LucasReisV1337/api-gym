@@ -13,7 +13,7 @@ model User {
     email         String      @unique
     password      String
     emailVerified Boolean     @default(false)
-    trainnings    Trainning[]
+    trainings     Trainning[]
 }
 
 model Trainning {
@@ -23,19 +23,19 @@ model Trainning {
     exercises Exercise[]
 
     userId String
-    user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Exercise {
     id          String @id @default(uuid())
     name        String
-    description String
-    category    String
-    restTime    Int
-    weight      Int
-    repetitions Int
-    series      Int
+    description String?
+    category    String?
+    restTime    Int?
+    weight      Int?
+    repetitions Int?
+    series      Int?
 
-    trainningId String
-    trainning   Trainning @relation(fields: [trainningId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    trainingId String
+    training   Trainning @relation(fields: [trainingId], references: [id], onDelete: Cascade)
 }

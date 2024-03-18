@@ -15,11 +15,7 @@ class User {
   + updateAccount(): void
   + changePassword(): void
   + trainings: Training[]
-  + newPasswordCodes: NewPasswordCode[]
-  + workoutHistory: WorkoutHistory[] 
-  + bodyData: BodyData[] 
-  + performanceEvaluations: PerformanceEvaluation[]
-}
+  }
 
 class Exercise {
   + id: uuid
@@ -45,50 +41,9 @@ class Training {
   + exercises: Exercise[]
 }
 
-class NewPasswordCode {
-    + id: uuid
-    + code: String
-    + user: User
-    + expirationDate: Date
-    + createCode(): void
-    + deleteCode(): void
-    + verifyCode(): void
-}
 
-class WorkoutHistory {
-    + id: uuid
-    + user: User
-    + date: Date
-    + viewHistory(): void
-    + trainings: Training[]
-}
-
-class BodyData {
-    + id: uuid
-    + user: User
-    + date: Date
-    + weight: number
-    + measurements: String
-    + bodyFatPercentage: number
-    + recordBodyData(): void
-    + viewProgress(): void
-}
-
-class PerformanceEvaluation {
-    + id: uuid
-    + user: User
-    + date: Date
-    + evaluationScore: number
-    + automaticEvaluation(): void
-    + suggestImprovements(): void
-    + trainings: Training[]
-}
 
 User --> Exercise : cria
-User --> NewPasswordCode : cria ao solicitar troca de senha 
-User --> WorkoutHistory : visualiza histórico
-User --> BodyData : registra, visualiza progresso
-User --> PerformanceEvaluation : avalia, sugere melhorias
 Exercise --|> Training : inclui
 
 @enduml

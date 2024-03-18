@@ -9,11 +9,6 @@ class User {
   + createdAt: Date
   + updatedAt: Date
   + trainings: Training[]
-  + newPasswordCodes: NewPasswordCode[]
-  + workoutHistory: WorkoutHistory[]
-  + goals: Goals[]
-  + bodyData: BodyData[]
-  + performanceEvaluations: PerformanceEvaluation[]
-}
+  }
 
 @enduml
