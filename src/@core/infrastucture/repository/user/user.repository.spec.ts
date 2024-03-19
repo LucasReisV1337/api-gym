@@ -1,137 +1,131 @@
-import { PrismaClient } from "@prisma/client";
-import User from "../../../domain/user/entity/user";
-import UserRepository from "./user.repository";
 
-const prisma = new PrismaClient();
+import User from '../../../domain/user/entity/user';
+import UserRepository from './user.repository';
 
-describe("UserRepository", () => {
-  let userRepository: UserRepository;
+// Mock PrismaClient
+jest.mock('@prisma/client', () => ({
+  PrismaClient: jest.fn(() => ({
+    user: {
+      create: jest.fn(),
+      update: jest.fn(),
+      findMany: jest.fn(),
+      findUnique: jest.fn(),
+      delete: jest.fn(),
+    },
+  })),
+}));
 
-  beforeAll(() => {
+describe('UserRepository', () => {
+  let userRepository:any;
+
+  beforeEach(() => {
     userRepository = new UserRepository();
   });
 
-  afterEach(async () => {
-    await prisma.user.deleteMany();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  afterAll(async () => {
-    await prisma.$disconnect();
-  });
-
-  describe("create", () => {
-    it("should create a new user", async () => {
-      const user = new User("John Doe", "john@example.com", "password");
-
-      await userRepository.create(user);
-
-      const createdUser = await prisma.user.findUnique({
-        where: {
-          email: user.email,
-        },
-      });
-
-      expect(createdUser).toBeDefined();
-      expect(createdUser?.nickname).toBe(user.nickname);
-    });
-  });
-
-  describe("findById", () => {
-    it("should return the user with the specified id", async () => {
-      const user = new User("John Doe", "john@example.com", "password");
-      const createdUser = await prisma.user.create({
+  describe('create', () => {
+    it('should create a new user', async () => {
+      userRepository.findByEmail = jest.fn(() => Promise.resolve(undefined));
+      const mockUser = new User('test_user', 'test@example.com', 'password123');
+      await userRepository.create(mockUser);
+      expect(userRepository.findByEmail).toHaveBeenCalledWith('test@example.com');
+      expect(userRepository.prisma.user.create).toHaveBeenCalledWith({
         data: {
-          nickname: user.nickname,
-          email: user.email,
-          password: user.password
+          nickname: 'test_user',
+          email: 'test@example.com',
+          password: 'password123',
         },
       });
-
-      const foundUser = await userRepository.findById(createdUser.id);
-
-      expect(foundUser).toBeDefined();
-      expect(foundUser?.nickname).toBe(user.nickname);
-      expect(foundUser?.email).toBe(user.email);
     });
 
-    it("should return undefined if the user is not found", async () => {
-      const foundUser = await userRepository.findById("nonexistent-id");
-
-      expect(foundUser).toBeUndefined();
-    });
-  });
-
-  describe("delete", () => {
-    it("should delete the user with the specified id", async () => {
-      const user = new User("John Doe", "john@example.com", "password");
-      const createdUser = await prisma.user.create({
-        data: {
-          nickname: user.nickname,
-          email: user.email,
-          password: user.password,
-        },
-      });
-
-      await userRepository.delete(createdUser.id);
-
-      const deletedUser = await prisma.user.findUnique({
-        where: {
-          id: createdUser.id,
-        },
-      });
-
-      expect(deletedUser).toBeNull();
+    it('should throw error if user already exists', async () => {
+      userRepository.findByEmail = jest.fn(() => Promise.resolve(new User(
+        'existing_user',
+        'email',
+        'password',
+        '1'
+      )));
+      const mockUser = new User('existing_user', 'existing@example.com', 'password123');
+      await expect(userRepository.create(mockUser)).rejects.toThrow('Usuário já cadastrado');
     });
   });
 
-  describe("findByEmail", () => {
-    it("should return the user with the specified email", async () => {
-      const user = new User("John Doe", "john@example.com", "password");
-      await prisma.user.create({
+  describe('update', () => {
+    it('should update an existing user', async () => {
+      const mockUser = new User('test_user', 'test@example.com', 'password123');
+      await userRepository.update(mockUser);
+      expect(userRepository.prisma.user.update).toHaveBeenCalledWith({
+        where: { id: mockUser.id },
         data: {
-          nickname: user.nickname,
-          email: user.email,
-          password: user.password,
+          nickname: 'test_user',
+          email: 'test@example.com',
+          password: 'password123',
         },
       });
-
-      const foundUser = await userRepository.findByEmail(user.email);
-
-      expect(foundUser).toBeDefined();
-      expect(foundUser?.nickname).toBe(user.nickname);
-      expect(foundUser?.email).toBe(user.email);
-    });
-
-    it("should return undefined if the user is not found", async () => {
-      const foundUser = await userRepository.findByEmail(
-        "nonexistent@example.com"
-      );
-
-      expect(foundUser).toBeUndefined();
     });
   });
 
-  describe("findAll", () => {
-    it("should return all users", async () => {
-      const user1 = new User("John Doe", "johndoe@email.com", "password");
-      const user2 = new User("Jane Doe2", "johndoe2@email.com", "password");
-      await prisma.user.create({
-        data: {
-          nickname: user1.nickname,
-          email: user1.email,
-          password: user1.password,
-        },
-      });
-      await prisma.user.create({
-        data: {
-          nickname: user2.nickname,
-          email: user2.email,
-          password: user2.password,
-        },
-      });
-
+  describe('findAll', () => {
+    it('should find all users', async () => {
+      userRepository.prisma.user.findMany.mockResolvedValueOnce([
+        { id: '1', nickname: 'user1', email: 'user1@example.com', password: 'password1' },
+        { id: '2', nickname: 'user2', email: 'user2@example.com', password: 'password2' },
+      ]);
       const users = await userRepository.findAll();
       expect(users).toHaveLength(2);
+      expect(users[0]).toBeInstanceOf(User);
+    });
+  });
+
+  describe('findById', () => {
+    it('should find a user by ID', async () => {
+      userRepository.prisma.user.findUnique.mockResolvedValueOnce({
+        id: '1',
+        nickname: 'test_user',
+        email: 'test@example.com',
+        password: 'password123',
+      });
+      const user = await userRepository.findById('1');
+      expect(user).toBeInstanceOf(User);
+      expect(user.nickname).toEqual('test_user');
+    });
+
+    it('should return undefined if user does not exist', async () => {
+      userRepository.prisma.user.findUnique.mockResolvedValueOnce(undefined);
+      const user = await userRepository.findById('999');
+      expect(user).toBeUndefined();
+    });
+  });
+
+  describe('delete', () => {
+    it('should delete a user', async () => {
+      await userRepository.delete('1');
+      expect(userRepository.prisma.user.delete).toHaveBeenCalledWith({
+        where: { id: '1' },
+      });
+    });
+  });
+
+  describe('findByEmail', () => {
+    it('should find a user by email', async () => {
+      userRepository.prisma.user.findUnique.mockResolvedValueOnce({
+        id: '1',
+        nickname: 'test_user',
+        email: 'test@example.com',
+        password: 'password123',
+      });
+      const user = await userRepository.findByEmail('test@example.com');
+      expect(user).toBeInstanceOf(User);
+      expect(user.nickname).toEqual('test_user');
+    });
+
+    it('should return undefined if user does not exist', async () => {
+      userRepository.prisma.user.findUnique.mockResolvedValueOnce(undefined);
+      const user = await userRepository.findByEmail('nonexistent@example.com');
+      expect(user).toBeUndefined();
     });
   });
 });

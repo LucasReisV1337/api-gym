@@ -5,6 +5,9 @@ const prisma = new PrismaClient();
 
 export default class UserRepository implements UserRepositoryInterface {
   async create(user: User): Promise<void> {
+    if (await this.findByEmail(user.email)) {
+      throw new Error("Usuário já cadastrado");
+    }
     try {
       await prisma.user.create({
         data: {
@@ -20,7 +23,7 @@ export default class UserRepository implements UserRepositoryInterface {
 
   async update(user: User): Promise<void> {
     try {
-      const updatedUser = await prisma.user.update({
+      await prisma.user.update({
         where: {
           id: user.id,
         },
@@ -38,6 +41,7 @@ export default class UserRepository implements UserRepositoryInterface {
   async findAll(): Promise<User[]> {
     try {
       const users = await prisma.user.findMany();
+      console.log(users);
       return users.map(
         (user) => new User(user.nickname, user.email, user.password)
       );
@@ -54,6 +58,7 @@ export default class UserRepository implements UserRepositoryInterface {
           id: id,
         },
       });
+      console.log(user);
       return user
         ? new User(user.nickname, user.email, user.password)
         : undefined;
@@ -82,6 +87,7 @@ export default class UserRepository implements UserRepositoryInterface {
           email: email,
         },
       });
+      console.log(user);
       return user
         ? new User(user.nickname, user.email, user.password)
         : undefined;
