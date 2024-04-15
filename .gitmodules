@@ -1,0 +1,6 @@
+[submodule "src/src/project"]
+	path = src/src/project
+	url = git@github.com:LucasReisV1337/api-login.git
+[submodule "src/src/src/project"]
+	path = src/src/src/project
+	url = git@github.com:LucasReisV1337/api-login.git
