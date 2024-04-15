@@ -8,7 +8,19 @@ class User {
   + emailVerified: boolean
   + createdAt: Date
   + updatedAt: Date
+  + login(): void
+  + verifyEmail(): void
+  + createAccount(): void
+  + deleteAccount(): void
+  + updateAccount(): void
+  + changePassword(): void
   + trainings: Training[]
   }
+
+
+
+
+User --> User : cria
+
 
 @enduml

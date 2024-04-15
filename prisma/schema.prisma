@@ -1,0 +1,41 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+model User {
+    id            String      @id @default(uuid())
+    nickname      String
+    email         String      @unique
+    password      String
+    emailVerified Boolean     @default(false)
+    trainings     Trainning[]
+}
+
+model Trainning {
+    id        String     @id @default(uuid())
+    name      String
+    isActive  Boolean    @default(false)
+    exercises Exercise[]
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Exercise {
+    id          String @id @default(uuid())
+    name        String
+    description String?
+    category    String?
+    restTime    Int?
+    weight      Int?
+    repetitions Int?
+    series      Int?
+
+    trainingId String
+    training   Trainning @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+}

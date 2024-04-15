@@ -1,0 +1,8 @@
+@startuml DiagramName
+
+
+actor User as u
+
+u -> u : Cria um novo User
+
+@enduml
