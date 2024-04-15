@@ -17,33 +17,10 @@ class User {
   + trainings: Training[]
   }
 
-class Exercise {
-  + id: uuid
-  + createdAt: Date
-  + updatedAt: Date
-  + name: String
-  + description: String
-  + category: String
-  + restTime: number
-  + weight: number
-  + repetitions: number
-  + series: number
-  + createExercise(): void
-  + updateExercise(): void
-  + deleteExercise(): void
-  + getExercise(): void
-}
-
-class Training {
-  + id: uuid
-  + name: String
-  + active: boolean
-  + exercises: Exercise[]
-}
 
 
 
-User --> Exercise : cria
-Exercise --|> Training : inclui
+User --> User : cria
+
 
 @enduml

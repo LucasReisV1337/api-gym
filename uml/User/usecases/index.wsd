@@ -16,15 +16,8 @@ package "User" {
 
   usecase "changePassword()OK" as UC6 <<O User altera a senha da sua conta por razões de segurança>>
 
-  usecase "listTraining()" as UC7 <<O User explora e observa os programas de treinamento disponíveis>>
+  usecase "emitNewPassword()" as UC7 <<O User inicia um processo para redefinir ou recuperar sua senha>>
 
-  usecase "emitNewPassword()" as UC8 <<O User inicia um processo para redefinir ou recuperar sua senha>>
-
-  usecase "viewTrainingHistory()" as UC9 <<O User revisa e examina seus dados históricos de treino>>
-
-  usecase "recordBodyData()" as UC10 <<O User registra seu peso atual e medidas corporais>>
-
-  usecase "evaluatePerformance()" as UC11 <<O User avalia e analisa suas métricas de desempenho>>
 }
 
 u --> UC1
@@ -34,8 +27,4 @@ u --> UC4
 u --> UC5
 u --> UC6
 u --> UC7
-u --> UC8
-u --> UC9
-u --> UC10
-u --> UC11
 @enduml
